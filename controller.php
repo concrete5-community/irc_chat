@@ -4,7 +4,7 @@ class IrcChatPackage extends Package {
 
 	protected $pkgHandle = 'irc_chat';
 	protected $appVersionRequired = '5.6.0';
-	protected $pkgVersion = '0.1.1';
+	protected $pkgVersion = '0.1.2';
 
 	public function getPackageName() {
 		return t('IRC Chat');

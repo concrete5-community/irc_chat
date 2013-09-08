@@ -9,16 +9,24 @@
 			<unsigned />
 			<notnull />
 		</field>
-		<field name="serverKiwiIRC" type="C" size="150" />
+		<field name="serverKiwiIRC" type="C" size="150">
+			<notnull />
+		</field>
 		<field name="network" type="C" size="150">
 			<notnull />
 		</field>
-		<field name="channel" type="C" size="150" />
-		<field name="theme" type="C" size="50" />
+		<field name="channel" type="C" size="150">
+			<notnull />
+		</field>
+		<field name="theme" type="C" size="50">
+			<notnull />
+		</field>
 		<field name="nicknameFromUsername" type="L">
 			<unsigned />
 			<notnull />
 		</field>
-		<field name="nickname" type="C" size="50" />
+		<field name="nickname" type="C" size="50">
+			<notnull />
+		</field>
 	</table>
 </schema>
