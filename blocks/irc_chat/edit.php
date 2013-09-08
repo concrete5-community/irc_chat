@@ -96,4 +96,6 @@ $nicknameFromUsername = empty($nicknameFromUsername) ? false : true;
 		<input type="checkbox" name="nicknameFromUsername" <?php echo $nicknameFromUsername ? ' checked' : ''?>>
 		<?php echo t('Suggest nickname from username of logged-in users'); ?>
 	</label>
+	<br>
+	<p><?php echo t('This block uses <a href="https://kiwiirc.com/" target="_blank">KiwiIRC</a>.'); ?></p>
 </div>
