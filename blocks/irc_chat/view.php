@@ -3,7 +3,8 @@
 $th = Loader::helper('text');
 
 if(Page::getCurrentPage()->isEditMode()) {
-	?><div style="width:100%; height:<?php echo $height; ?>px">
+	?><div class="ccm-edit-mode-disabled-item" style="width:100%; height:<?php echo $height; ?>px; padding: <?php echo max(0, ($height >> 1) - 10); ?>px 0 0 0">
+		<?php echo t('IRC chat disabled in edit mode.'); ?>
 	</div><?php
 }
 else {
