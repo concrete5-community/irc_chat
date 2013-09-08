@@ -104,7 +104,7 @@ class IrcChatBlockController extends BlockController {
 		$data['nickname'] = isset($data['nickname']) ? trim($data['nickname']) : '';
 		if((!$data['nicknameFromUsername']) && strlen($data['nickname'])) {
 			if(!preg_match('/^[a-z_\\-\\\\\\[\\]{}^`|]([0-9a-z_\\-\\\\\\[\\]{}^`|])*$/i', $data['nickname'])) {
-				$e->add(t('The nick name contains invalid characters.'));
+				$e->add(t('The nickname contains invalid characters.'));
 			}
 		}
 		if($e->has()) {
