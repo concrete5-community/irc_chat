@@ -1,7 +1,7 @@
 msgid ""
-msgstr "Project-Id-Version: irc_chat 0.1.2\n"
+msgstr "Project-Id-Version: irc_chat 0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-08 12:56+0000\n"
+"POT-Creation-Date: 2013-09-09 09:28+0000\n"
 "MIME-Version: 1.0\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -46,69 +46,113 @@ msgstr ""
 msgid "The height must be a number greater than zero."
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/controller.php:69
+#: packages/irc_chat/blocks/irc_chat/controller.php:72
 msgid "Please specify the IRC network."
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/controller.php:89
+#: packages/irc_chat/blocks/irc_chat/controller.php:78
 msgid "The channel name contains invalid characters."
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/controller.php:107
+#: packages/irc_chat/blocks/irc_chat/controller.php:96
 msgid "The nickname contains invalid characters."
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:28
-msgid "Height (in pixels)"
+#: packages/irc_chat/blocks/irc_chat/edit.php:37
+msgid "IRC"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:33
-msgid "KiwiIRC server"
+#: packages/irc_chat/blocks/irc_chat/edit.php:38
+msgid "Appearance"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:35
-#, php-format
-msgid "Leave empty to use the default (%s)"
+#: packages/irc_chat/blocks/irc_chat/edit.php:39
+msgid "Advanced options"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:54
+#: packages/irc_chat/blocks/irc_chat/edit.php:40
+msgid "About"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:62
 msgid "IRC network"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:55
+#: packages/irc_chat/blocks/irc_chat/edit.php:63
 msgid "Please select"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:58
-msgid "Or enter a custom IRC network:"
+#: packages/irc_chat/blocks/irc_chat/edit.php:66
+msgid "Or enter a custom IRC network (in the form <i>host:port</i>)"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:63
+#: packages/irc_chat/blocks/irc_chat/edit.php:71
 msgid "IRC channel"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:83
+#: packages/irc_chat/blocks/irc_chat/edit.php:76
+msgid "Nickname"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:81
+msgid "Suggest nickname from username of logged-in users"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:87
+msgid "Height (in pixels)"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:107
 msgid "Theme"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:84
+#: packages/irc_chat/blocks/irc_chat/edit.php:108
 msgctxt "KiwiIrcTheme"
 msgid "None/default"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:87
-msgid "Or enter a custom theme:"
+#: packages/irc_chat/blocks/irc_chat/edit.php:111
+msgid "Or enter a custom theme"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:92
-msgid "Nickname"
+#: packages/irc_chat/blocks/irc_chat/edit.php:115
+msgid "Device types"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:97
-msgid "Suggest nickname from username of logged-in users"
+#: packages/irc_chat/blocks/irc_chat/edit.php:118
+msgid "show only a link for mobile phones"
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/edit.php:100
+#: packages/irc_chat/blocks/irc_chat/edit.php:122
+msgid "show only a link for tablets"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:128
+msgid "KiwiIRC server"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:130
+#, php-format
+msgid "Leave empty to use the default (%s)"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:134
+msgid "Key for the IRC channel"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:138
+msgid "Other options"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:141
+msgid "connect to IRC network with SSL"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:145
+msgid "debug enabled"
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/edit.php:150
 msgid "This block uses <a href=\"https://kiwiirc.com/\" target=\"_blank\">KiwiIRC</a>."
 msgstr ""
 
@@ -116,13 +160,14 @@ msgstr ""
 msgid "IRC chat disabled in edit mode."
 msgstr ""
 
-#: packages/irc_chat/blocks/irc_chat/view.php:12
-msgid "Your browser does not support frames."
-msgstr ""
-
-#: packages/irc_chat/blocks/irc_chat/view.php:13
+#: packages/irc_chat/blocks/irc_chat/view.php:27
+#: packages/irc_chat/blocks/irc_chat/view.php:32
 #, php-format
 msgid "To open the IRC chat <a href=\"%s\" target=\"_blank\">click here</a>."
+msgstr ""
+
+#: packages/irc_chat/blocks/irc_chat/view.php:31
+msgid "Your browser does not support frames."
 msgstr ""
 
 #: packages/irc_chat/controller.php:14

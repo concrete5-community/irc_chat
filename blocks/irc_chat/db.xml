@@ -9,13 +9,25 @@
 			<unsigned />
 			<notnull />
 		</field>
+		<field name="linkForPhones" type="L">
+			<notnull />
+		</field>
+		<field name="linkForTablets" type="L">
+			<notnull />
+		</field>
 		<field name="serverKiwiIRC" type="C" size="150">
+			<notnull />
+		</field>
+		<field name="networkSSL" type="L">
 			<notnull />
 		</field>
 		<field name="network" type="C" size="150">
 			<notnull />
 		</field>
 		<field name="channel" type="C" size="150">
+			<notnull />
+		</field>
+		<field name="channelKey" type="C" size="150">
 			<notnull />
 		</field>
 		<field name="theme" type="C" size="50">
@@ -26,6 +38,9 @@
 			<notnull />
 		</field>
 		<field name="nickname" type="C" size="50">
+			<notnull />
+		</field>
+		<field name="debugKiwiIRC" type="L">
 			<notnull />
 		</field>
 	</table>

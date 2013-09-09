@@ -3,7 +3,7 @@
 
 class IrcChatBlockController extends BlockController {
 	protected $btInterfaceWidth = 400;
-	protected $btInterfaceHeight = 540;
+	protected $btInterfaceHeight = 335;
 	protected $btTable = 'btIrcChat';
 
 	public function getBlockTypeName() {
@@ -13,7 +13,7 @@ class IrcChatBlockController extends BlockController {
 	public function getBlockTypeDescription() {
 		return t('Direct access to IRC channels.');
 	}
-	
+
 	public function getDefaultKiwiIRCServer() {
 		return 'https://kiwiirc.com/client/';
 	}
@@ -35,7 +35,7 @@ class IrcChatBlockController extends BlockController {
 			'Ustream' => 'chat1.ustream.tv'
 		);
 	}
-	
+
 	public function getDefaultThemes() {
 		return array(
 			'relaxed' => tc('KiwiIrcTheme', 'Relaxed'),
@@ -56,7 +56,10 @@ class IrcChatBlockController extends BlockController {
 				$e->add(t('The height must be a number greater than zero.'));
 			}
 		}
+		$data['linkForPhones'] = empty($data['linkForPhones']) ? 0 : 1;
+		$data['linkForTablets'] = empty($data['linkForTablets']) ? 0 : 1;
 		$data['serverKiwiIRC'] = isset($data['serverKiwiIRC']) ? trim($data['serverKiwiIRC']) : '';
+		$data['networkSSL'] = empty($data['networkSSL']) ? 0 : 1;
 		$customNetwork = isset($data['network_custom']) ? trim($data['network_custom']) : '';
 		unset($data['network_custom']);
 		if(strlen($customNetwork)) {
@@ -68,30 +71,16 @@ class IrcChatBlockController extends BlockController {
 		if(!strlen($data['network'])) {
 			$e->add(t('Please specify the IRC network.'));
 		}
-		$data['channel'] = isset($data['channel']) ? trim($data['channel']) : '';
+		$data['channel'] = isset($data['channel']) ? ltrim(trim($data['channel']), '#') : '';
 		if(strlen($data['channel'])) {
-			switch($data['channel'][0]) {
-				case '&':
-				case '#':
-				case '+':
-				case '!':
-					if(strlen($data['channel']) == 1) {
-						$data['channel'] = '';
-					}
+			foreach(array(' ', "\x07", ',') as $invalidChar) {
+				if(strpos(substr($data['channel'], 1), $invalidChar) !== false) {
+					$e->add(t('The channel name contains invalid characters.'));
 					break;
-				default:
-					$data['channel'] = '#' . $data['channel'];
-					break;
-			}
-			if(strlen($data['channel'])) {
-				foreach(array(' ', "\x07", ',') as $invalidChar) {
-					if(strpos(substr($data['channel'], 1), $invalidChar) !== false) {
-						$e->add(t('The channel name contains invalid characters.'));
-						break;
-					}
 				}
 			}
 		}
+		$data['channelKey'] = isset($data['channelKey']) ? trim($data['channelKey']) : '';
 		$customTheme = isset($data['theme_custom']) ? trim($data['theme_custom']) : '';
 		unset($data['theme_custom']);
 		if(strlen($customTheme)) {
@@ -107,6 +96,7 @@ class IrcChatBlockController extends BlockController {
 				$e->add(t('The nickname contains invalid characters.'));
 			}
 		}
+		$data['debugKiwiIRC'] = empty($data['debugKiwiIRC']) ? 0 : 1;
 		if($e->has()) {
 			return $e;
 		}
@@ -127,11 +117,14 @@ class IrcChatBlockController extends BlockController {
 	}
 
 	public function view() {
-		$chatUrl = rtrim(strlen($this->serverKiwiIRC) ? $this->serverKiwiIRC : $this->getDefaultKiwiIRCServer(), '/');
-		if(strlen($this->network)) {
-			$chatUrl .= '/' . rawurldecode($this->network);
+		$ircUrl = $this->networkSSL ? 'ircs:' : 'irc:';
+		$ircUrl .= $this->network;
+		if(strlen($this->channel)) {
+			$ircUrl .= '/' . $this->channel;
+			if(strlen($this->channelKey)) {
+				$ircUrl .= '?' . $this->channelKey;
+			}
 		}
-		$chatUrl .= '/';
 		$gets = array();
 		$nickname = $this->nickname;
 		if($this->nicknameFromUsername && User::isLoggedIn()) {
@@ -146,11 +139,13 @@ class IrcChatBlockController extends BlockController {
 		if(strlen($this->theme)) {
 			$gets[] = 'theme=' . rawurlencode($this->theme);
 		}
+		if(strlen($this->debugKiwiIRC)) {
+			$gets[] = 'debug=1';
+		}
+		$chatUrl = rtrim(strlen($this->serverKiwiIRC) ? $this->serverKiwiIRC : $this->getDefaultKiwiIRCServer(), '/');
+		$chatUrl .= '/' . rawurlencode($ircUrl) . '/';
 		if(count($gets)) {
 			$chatUrl .= '?' . implode('&', $gets);
-		}
-		if(strlen($this->channel)) {
-			$chatUrl .= $this->channel[0] . rawurlencode(substr($this->channel, 1));
 		}
 		$this->set('chatUrl', $chatUrl);
 	}
